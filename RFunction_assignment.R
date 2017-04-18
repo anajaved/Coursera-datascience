@@ -1,5 +1,4 @@
-#For example, data for monitor 200 is contained in the file "200.csv". Each file contains three variables:
-#    
+#   Data for monitor 200 is contained in the file "200.csv". Each file contains three variables
 #   Date: the date of the observation in YYYY-MM-DD format (year-month-day)
 #   sulfate: the level of sulfate PM in the air on that date (measured in micrograms per cubic meter)
 #   nitrate: the level of nitrate PM in the air on that date (measured in micrograms per cubic meter)
