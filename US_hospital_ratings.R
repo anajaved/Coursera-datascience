@@ -1,11 +1,9 @@
 
 #30-day mortality rates for Heart Attack Histogram
+outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
 outcome[, 11] <- as.numeric(outcome[, 11])
 hist(outcome[, 11])
 
-data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
-sec <- sapply(data[, c(11, 17, 23)], as.numeric)
-sec<- sec[order(sec[, 2]), ]
 
 #Finding the best hospital in the state
 
