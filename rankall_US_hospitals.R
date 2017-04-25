@@ -14,17 +14,53 @@ rankall <- function(outcome, num = "best") {
         stop("Invalid Outcome.")
     }
     
+    
     if (outcome =="heart attack") {
         s <- split (data, data$State)
         
         each <- lapply(s, function (x, num) { 
             x= x[order(x[,11], x[,2]),]
-            print( x$Hospital.Name[num])
-            print(x$State[num])
+            if (num == "best") {
+                num = 1
+            } else if (num == "worst") {
+                num = nrow(x)
+            }
+            x$Hospital.Name[num]
         },num)
-}
+    }
+    
+    else if (outcome =="heart failure") {
+        s <- split (data, data$State)
+        
+        each <- lapply(s, function (x, num) { 
+            x= x[order(x[,17], x[,2]),]
+            if (num == "best") {
+                num = 1
+            } else if (num == "worst") {
+                num = nrow(x)
+            }
+            x$Hospital.Name[num]
+        },num)
+    }
+    
+    else {
+        s <- split (data, data$State)
+        
+        each <- lapply(s, function (x, num) { 
+            x= x[order(x[,23], x[,2]),]
+            if (num == "best") {
+                num = 1
+            } else if (num == "worst") {
+                num = nrow(x)
+            }
+            x$Hospital.Name[num]
+        },num)
+    }
+        return (data.frame(hospital=unlist(each), state=names(each)) ) 
 }
 
 
 setwd("~/Desktop/hospital_data")
-rankall("heart attack", 1)
+head(rankall("heart attack", "worst"))
+tail(rankall("pneumonia", 1))
+
