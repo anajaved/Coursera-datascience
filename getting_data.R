@@ -1,10 +1,10 @@
-#Getting Data
+#Getting Data Assignment 
+##################
+
+# Find OAuth settings for github using API
 
 library(httr)
 require(jsonlite)
-
-# -- Find OAuth settings for github:
-# -- Using API
 
 github <- oauth_endpoints("github")
 
@@ -17,4 +17,18 @@ json1 <- content(findings)
 json2 <- jsonlite::fromJSON(toJSON(json1))
 list(json2$name[[11]], json2$created_at[[11]])  #"2013-11-07T13:25:07Z"
 
-##########
+##################
+
+#American Community Survey data
+#sqldf library
+
+library(RCurl)
+library(sqldf)
+
+acs <- getURL("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv", 
+              ssl.verifyhost=FALSE, ssl.verifypeer=FALSE)
+acs_df <- read.csv(textConnection(acs), header=T)
+
+length(sqldf("select * from acs_df where AGEP < 50")) #239
+
+sqldf("select distinct AGEP from acs_df") #91 unique ages
