@@ -20,7 +20,6 @@ list(json2$name[[11]], json2$created_at[[11]])  #"2013-11-07T13:25:07Z"
 ##################
 
 #American Community Survey data
-#sqldf library
 
 library(RCurl)
 library(sqldf)
@@ -32,3 +31,20 @@ acs_df <- read.csv(textConnection(acs), header=T)
 length(sqldf("select * from acs_df where AGEP < 50")) #239
 
 sqldf("select distinct AGEP from acs_df") #91 unique ages
+
+##################
+
+#Webscrapping:
+#How many characters are in the 10th, 20th, 30th and 100th lines of HTML from this page:
+# http://biostat.jhsph.edu/~jleek/contact.html (Hint: the nchar() function in R may be helpful)
+
+con= url("http://biostat.jhsph.edu/~jleek/contact.html")
+htmlCode =readLines(con)
+close(con)
+
+nchar(htmlCode[10]) #45
+nchar(htmlCode[20]) #31
+nchar(htmlCode[30]) #7
+nchar(htmlCode[100]) #25
+
+
