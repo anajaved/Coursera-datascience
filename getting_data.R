@@ -47,4 +47,14 @@ nchar(htmlCode[20]) #31
 nchar(htmlCode[30]) #7
 nchar(htmlCode[100]) #25
 
+##################
+
+#NOAA.gov Sea Surface Temperature 
+#report the sum of the numbers in the fourth of the nine columns.
+
+data <- read.fwf(file= url('https://d396qusza40orc.cloudfront.net/getdata%2Fwksst8110.for'),
+                 skip=4, widths=c(12, 7, 4, 9, 4, 9, 4, 9, 4))
+col_4 <- data[,4]
+sum(col_4) #32426.7 
+
 
