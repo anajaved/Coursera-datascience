@@ -9,3 +9,5 @@ needimprovement_hospitals.R - Finds the hospitals with highest mortality rate, g
 state_hospital_ranks.R - Finds hospital given a state, outcome, and specified ranking.
 
 rankall_US_hospitals.R - Returns a data frame of hospitals for each US state, given a specified rank and outcome.
+
+getting_data.R - Functions that call Github API, implements sqldf library, and web scrape JHU site
