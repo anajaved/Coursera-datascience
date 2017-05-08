@@ -42,3 +42,6 @@ unlist(sprCount)
     #or
 sapply(spIns, sum)
 
+#Plyr Package to combine data
+library(plyr)
+ddply(InsectSprays,.(spray), summarize, sum=sum(count))
