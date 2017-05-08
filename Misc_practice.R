@@ -66,3 +66,13 @@ chicago %>% mutate(month=as.POSIXlt(date)$mon+1) %>%
     group_by(month) %>% summarise(pm25tmean2 = mean(pm25tmean2), 
                                   o3 = max(o3tmean2), no2=median(no2tmean2))
 
+#Merging dataframes with a common id
+library(plyr)
+df1 <- data.frame(id=sample(1:10), x=rnorm(10))
+df2 <- data.frame(id=sample(1:10), y=rnorm(10))
+arrange(join(df1,df2), id)
+
+#merging multiple df w/ plyr
+df3 <- data.frame(id=sample(1:10), z=rnorm(10))
+dfList <- list(df1, df2, df3)
+join_all(dfList)
