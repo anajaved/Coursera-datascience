@@ -24,4 +24,21 @@ tail(carMelt, 3)  #shows hp variable
 
 #Casting Data 
 cylData <- dcast(carMelt, cyl~variable, mean)
-cylData  #provides mean mpg & hp for each cyl 
+cylData  #provides mean mpg & hp for each cyl
+
+#Averaging values
+head(InsectSprays)
+names(InsectSprays)
+tapply(InsectSprays$count, InsectSprays$spray, mean) #total counts by spray type
+
+#Using split & lapply 
+spIns <- split(InsectSprays$count, InsectSprays$spray)
+sprCount <- lapply(spIns, sum)
+
+#Combining/Simplifying results:
+simplify2array(sprCount)
+    #or
+unlist(sprCount)
+    #or
+sapply(spIns, sum)
+
