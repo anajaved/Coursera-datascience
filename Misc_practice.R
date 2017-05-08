@@ -45,3 +45,24 @@ sapply(spIns, sum)
 #Plyr Package to combine data
 library(plyr)
 ddply(InsectSprays,.(spray), summarize, sum=sum(count))
+
+#Dplyr practice
+library(dplyr)
+setwd("~/Desktop")
+chicago <- readRDS("chicago.rds")
+
+head(select(chicago, city:dptp))
+head(select(chicago, -(city:dptp)))
+
+#group_by years 
+new_chicago <- mutate(chicago, year=as.POSIXlt(date)$year + 1900)
+years <- group_by(new_chicago, year)
+summarize(years, pm25tmean2=mean(pm25tmean2, na.rm=T), o3=max(o3tmean2),
+           no2= median(no2tmean2))
+
+#pipeline operator example
+#grouping summaries by month 
+chicago %>% mutate(month=as.POSIXlt(date)$mon+1) %>%
+    group_by(month) %>% summarise(pm25tmean2 = mean(pm25tmean2), 
+                                  o3 = max(o3tmean2), no2=median(no2tmean2))
+
