@@ -76,3 +76,16 @@ arrange(join(df1,df2), id)
 df3 <- data.frame(id=sample(1:10), z=rnorm(10))
 dfList <- list(df1, df2, df3)
 join_all(dfList)
+
+######## Cleaning character vectors:
+names(ability.cov) #Removing the period in "n.obs"
+splitNames <- strsplit(names(ability.cov), "\\.")
+splitNames[[3]][1]
+
+firstElement <- function(x) {x[1]}
+sapply(splitNames, firstElement)
+
+#To keep the full name, but remove only one character:
+sub("\\.", "", names(ability.cov)) #now is "nobs"
+
+
