@@ -10,7 +10,7 @@ data(cars)
 with(cars, plot(speed,dist))
 ```
 
-![](EDA-practice_files/figure-markdown_github/unnamed-chunk-1-1.png)
+![](https://github.com/anajaved/coursera-datascience/blob/master/figure-markdown_github/unnamed-chunk-1-1.png)
 
 Lattice System & Plot
 =====================
@@ -23,7 +23,7 @@ state <- data.frame(state.x77, region= state.region)
 xyplot(Life.Exp ~ Income | region, data=state, layout= c(4,1))
 ```
 
-![](EDA-practice_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](https://github.com/anajaved/coursera-datascience/blob/master/figure-markdown_github/unnamed-chunk-2-1.png)
 
 ggplot2 System
 ==============
@@ -36,4 +36,4 @@ data(mpg)
 qplot(displ, hwy, data=mpg)
 ```
 
-![](EDA-practice_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](https://github.com/anajaved/coursera-datascience/blob/master/figure-markdown_github/unnamed-chunk-3-1.png)
