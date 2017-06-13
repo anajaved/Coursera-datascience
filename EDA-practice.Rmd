@@ -1,3 +1,7 @@
+---
+output:
+  rmarkdown::github_document
+---
 #Base Plot System
 Oldest system, more intuitive. Start off with a plot function, and add on features one by one. Can use annotations to add/modify plot (such as text, lines, points, and axis). Convenient but can't go back once started.
 ```{r}
