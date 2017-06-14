@@ -10,7 +10,7 @@ data(cars)
 with(cars, plot(speed,dist))
 ```
 
-![](https://github.com/anajaved/coursera-datascience/blob/master/figure-markdown_github/unnamed-chunk-1-1.png)
+![](EDA-practice_files/figure-markdown_github/unnamed-chunk-1-1.png)
 
 Lattice System & Plot
 =====================
@@ -23,7 +23,7 @@ state <- data.frame(state.x77, region= state.region)
 xyplot(Life.Exp ~ Income | region, data=state, layout= c(4,1))
 ```
 
-![](https://github.com/anajaved/coursera-datascience/blob/master/figure-markdown_github/unnamed-chunk-2-1.png)
+![](EDA-practice_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 ggplot2 System
 ==============
@@ -36,4 +36,45 @@ data(mpg)
 qplot(displ, hwy, data=mpg)
 ```
 
-![](https://github.com/anajaved/coursera-datascience/blob/master/figure-markdown_github/unnamed-chunk-3-1.png)
+![](EDA-practice_files/figure-markdown_github/unnamed-chunk-3-1.png)
+
+Ozone Airquality Boxplot
+========================
+
+``` r
+#boxplot by factoring the months of airquality variable of month
+library(datasets)
+class(airquality$Month)
+```
+
+    ## [1] "integer"
+
+``` r
+airquality <- transform(airquality, Month=factor(Month))
+boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone")
+```
+
+![](EDA-practice_files/figure-markdown_github/unnamed-chunk-4-1.png)
+
+Adding a title in Base Plotting Functions
+=========================================
+
+``` r
+library(datasets)
+with(airquality, plot(Wind, Ozone))
+title(main="Ozone and Wind in NYC")
+```
+
+![](EDA-practice_files/figure-markdown_github/unnamed-chunk-5-1.png)
+
+Another Example of Base Plot w/ Annotation (with legend & color)
+----------------------------------------------------------------
+
+``` r
+with(airquality, plot(Wind, Ozone, type="n",main="Wind and Ozone in NYC"))
+with(subset(airquality, Month==5), points(Wind, Ozone, col='blue'))
+with(subset(airquality, Month!=5), points(Wind, Ozone, col='red'))
+legend("topright", pch=1, col=c("blue", "red"), legend=c("May", "Other Months"))
+```
+
+![](EDA-practice_files/figure-markdown_github/unnamed-chunk-6-1.png)
