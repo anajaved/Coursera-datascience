@@ -62,3 +62,11 @@ x<- rnorm(100)
 y<- rnorm(100)
 plot(x,y)
 par("mar")
+
+## Copying Plots w/ device graphics
+library(datasets)
+with(faithful, plot(eruptions, waiting))
+title(main="Old Faithful Geyser Data")
+dev.copy(png, file="geyserplot.png")
+dev.off()
+
